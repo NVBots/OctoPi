@@ -1,0 +1,7 @@
+###############################################################################
+# All our config settings must start with CITHEME_
+
+# OctoPrint repo & branch
+[ -n "$CITHEME_REPO_URL" ] || CITHEME_REPO_URL=https://github.com/NVBots/octoprint-ci-theme.git
+[ -n "$CITHEME_REPO_OAUTHTOKEN" ] || CITHEME_REPO_OAUTHTOKEN=
+[ -n "$CITHEME_REPO_BRANCH" ] || CITHEME_REPO_BRANCH=master

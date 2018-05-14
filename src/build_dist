@@ -2,6 +2,8 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+cp $DIR/config.yaml $DIR/modules/octopi/filesystem/home/pi/.octoprint/config.yaml
+
 export DIST_PATH=${DIR}
 export CUSTOM_PI_OS_PATH=$(<${DIR}/custompios_path)
 export PATH=$PATH:$CUSTOM_PI_OS_PATH
