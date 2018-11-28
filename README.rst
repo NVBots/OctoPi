@@ -25,9 +25,9 @@ How to use it?
 --------------
 
 #. Unzip the image and install it to an sd card `like any other Raspberry Pi image <https://www.raspberrypi.org/documentation/installation/installing-images/README.md>`_
-#. Configure your WiFi by editing ``octopi-network.txt`` on the root of the flashed card when using it like a thumb drive
+#. Configure your WiFi by editing ``octopi-wpa-supplicant.txt`` on the root of the flashed card when using it like a thumb drive
 #. Boot the Pi from the card
-#. Log into your Pi via SSH (it is located at ``octopi.local`` `if your computer supports bonjour <https://learn.adafruit.com/bonjour-zeroconf-networking-for-windows-and-linux/overview>`_ or the IP address assigned by your router), default username is "pi", default password is "raspberry", change the password using the ``passwd`` command and expand the filesystem of the SD card through the corresponding option when running ``sudo raspi-config``.
+#. Log into your Pi via SSH (it is located at ``octopi.local`` `if your computer supports bonjour <https://learn.adafruit.com/bonjour-zeroconf-networking-for-windows-and-linux/overview>`_ or the IP address assigned by your router), default username is "pi", default password is "raspberry" and change the password using the ``passwd`` command.
 
 OctoPrint is located at `http://octopi.local <http://octopi.local>`_ and also at `https://octopi.local <https://octopi.local>`_. Since the SSL certificate is self signed (and generated upon first boot), you will get a certificate warning at the latter location, please ignore it.
 
@@ -65,7 +65,7 @@ OctoPi can be built from Debian, Ubuntu, Raspbian, or even OctoPi.
 Build requires about 2.5 GB of free space available.
 You can build it by issuing the following commands::
 
-    sudo apt-get install gawk util-linux realpath qemu-user-static git p7zip-full
+    sudo apt-get install gawk util-linux realpath qemu-user-static git p7zip-full python3
     
     git clone https://github.com/guysoft/CustomPiOS.git
     git clone https://github.com/guysoft/OctoPi.git
@@ -79,7 +79,7 @@ You can build it by issuing the following commands::
 Building OctoPi Variants
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-OctoPi supports building variants, which are builds with changes from the main release build. An example and other variants are available in the folder ``src/variants/example``.
+OctoPi supports building variants, which are builds with changes from the main release build. An example and other variants are available in [CustomPiOS, folder ``src/variants/example``](https://github.com/guysoft/CustomPiOS/tree/CustomPiOS/src/variants/example).
 
 To build a variant use::
 

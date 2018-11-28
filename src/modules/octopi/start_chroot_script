@@ -44,13 +44,10 @@ pushd /home/pi
     echo "--- Installing OctoPrint"
 
     #pybonjour (for mdns discovery)
-    sudo -u pi /home/pi/oprint/bin/pip install https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/pybonjour/pybonjour-1.1.1.tar.gz
+    sudo -u pi /home/pi/oprint/bin/pip install $OCTOPI_PYBONJOUR_ARCHIVE
 
     #OctoPrint
-    gitclone OCTOPI_OCTOPRINT_REPO OctoPrint
-    pushd OctoPrint
-      PIP_DEFAULT_TIMEOUT=60 sudo -u pi /home/pi/oprint/bin/python setup.py install
-    popd
+    PIP_DEFAULT_TIMEOUT=60 sudo -u pi /home/pi/oprint/bin/pip install $OCTOPI_OCTOPRINT_ARCHIVE
   fi
 
   #mjpg-streamer
@@ -117,6 +114,9 @@ EOT
     echo "--- Installing WiringPi"
     apt-get install wiringpi
   fi
+
+  # fetch current yq build and install to /usr/local/bin
+  wget -O yq $OCTOPI_YQ_DOWNLOAD && chmod +x yq && mv yq /usr/local/bin
   
 popd
 
@@ -140,6 +140,7 @@ sed -i "s@secure_path=\"@secure_path=\"/root/bin:@g" /etc/sudoers
 chmod +x /root/bin/git
 
 # add some "How To" info to boot output
+# Note, this code is also in /filesystem/home/pi/scripts/
 sed -i 's@exit 0@@' /etc/rc.local
 cat <<'EOT' >> /etc/rc.local
 
@@ -150,7 +151,10 @@ echo "You may now open a web browser on your local network and "
 echo "navigate to any of the following addresses to access "
 echo "OctoPrint:"
 echo
-echo "    http://octopi.local"
+for name in $_NAME;
+do
+    echo " http://$name.local"
+done
 
 for ip in $(hostname -I);
 do 
@@ -180,11 +184,6 @@ systemctl_if_exists disable lightdm.service || true
 
 update-rc.d change_password defaults
 update-rc.d change_hostname defaults
-
-systemctl_if_exists enable check_wpa_link.service
-
-### Fix SSH
-echo "IPQoS 0x00" >> /etc/ssh/sshd_config
 
 
 ### Try and fix https://github.com/guysoft/OctoPi/issues/424
