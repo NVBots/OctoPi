@@ -1,6 +1,7 @@
 export DIST_NAME=CILocal
 export DIST_VERSION=0.3
+export OCTOPI_OCTOPRINT_ARCHIVE=https://github.com/NVBots/OctoPrint/archive/1.3.6-ci.zip
 export OCTOPI_OCTOPRINT_REPO_SHIP=https://github.com/NVBots/OctoPrint.git
-export OCTOPI_OCTOPRINT_REPO_BRANCH=
-export MODULES="base(raspicam, network, disable-services(octopi, citheme, removal), password-for-sudo)"
+export OCTOPI_OCTOPRINT_REPO_BRANCH=master
+export MODULES="base(raspicam, network, disable-services(octopi, ci), password-for-sudo)"
 export BASE_OVERRIDE_HOSTNAME=saamci

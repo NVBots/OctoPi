@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# OctoPI generation script
+# Helper script that runs in a Raspbian chroot to create the OctoPI distro
+# Written by Guy Sheffer <guysoft at gmail dot com> and Gina Häußge <osd@foosel.net>
+# GPL V3
+########
+set -x
+set -e
+
+export LC_ALL=C
+
+source /common.sh
+
+unpack /filesystem/octoprint_plugins /opt/octoprint_plugins
+unpack /filesystem/printerProfiles /home/pi/.octoprint/printerProfiles pi
+unpack /filesystem/HostLoaderApp /opt/HostLoaderApp
+unpack /filesystem/rules /etc/udev/rules.d
+
+
+apt-get update
+apt-get -y --force-yes install avrdude
+
+pushd /opt/octoprint_plugins
+    echo "--- Installing CI plugins"
+    sudo -u pi /home/pi/oprint/bin/pip install -r requirements.txt
+popd
+
+pushd /home/pi
+    echo "-- Installing Firmware Updater Dependencies"
+    sudo -u pi /home/pi/oprint/bin/pip install sarge==0.1.4
+    echo "-- Downloading Firmware Updater Plugin"
+    sudo -u pi git clone --branch bootloader "https://github.com/NVBots/OctoPrint-FirmwareUpdater.git"
+    pushd OctoPrint-FirmwareUpdater
+        echo "-- Installing Firmware Updater Plugin"
+        sudo -u pi /home/pi/oprint/bin/pip install .
+    popd
+popd
+
+
+
+pushd /opt/HostLoaderApp
+    echo "--- Installing HostLoaderApp"
+    ./nv_install.sh
+popd

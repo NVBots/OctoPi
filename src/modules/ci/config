@@ -1,0 +1,10 @@
+###############################################################################
+# All our config settings must start with CI_
+
+# OctoPrint repo & branch
+[ -n "$CI_THEME_REPO_URL" ] || CI_THEME_REPO_URL=https://github.com/NVBots/octoprint-ci-theme.git
+[ -n "$CI_THEME_REPO_OAUTHTOKEN" ] || CI_THEME_REPO_OAUTHTOKEN=
+[ -n "$CI_THEME_REPO_BRANCH" ] || CI_THEME_REPO_BRANCH=master
+[ -n "$CI_REMOVAL_REPO_URL" ] || CI_REMOVAL_REPO_URL=https://github.com/NVBots/octoprint-removal.git
+[ -n "$CI_REMOVAL_REPO_OAUTHTOKEN" ] || CI_REMOVAL_REPO_OAUTHTOKEN=
+[ -n "$CI_REMOVAL_REPO_BRANCH" ] || CI_REMOVAL_REPO_BRANCH=master

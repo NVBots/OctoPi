@@ -12,10 +12,17 @@ webcam:
 printerProfiles:
   default: saam
 plugins:
+  _disabled:
+  - announcements
+  - softwareupdate
+  - pluginmanager
   cura:
     cura_engine: /usr/local/bin/cura_engine
   discovery:
     publicPort: 80
+  firmwareupdater:
+    flash_method: hid_bootloader
+    hid_bootloader_path: /usr/bin/hid_bootloader_cli
 server:
   commands:
     systemShutdownCommand: sudo shutdown -h now
