@@ -1,7 +1,0 @@
-###############################################################################
-# All our config settings must start with REMOVAL_
-
-# OctoPrint repo & branch
-[ -n "$REMOVAL_REPO_URL" ] || REMOVAL_REPO_URL=https://github.com/NVBots/octoprint-removal.git
-[ -n "$REMOVAL_REPO_OAUTHTOKEN" ] || REMOVAL_REPO_OAUTHTOKEN=
-[ -n "$REMOVAL_REPO_BRANCH" ] || REMOVAL_REPO_BRANCH=master
