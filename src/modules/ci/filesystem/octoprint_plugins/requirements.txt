@@ -1,3 +1,4 @@
-octoprint-ci-theme-1.0.0.tar.gz
+octoprint-ci-theme-1.1.1.tar.gz
 octoprint-removal-1.0.0.tar.gz
-heated-chamber-0.0.1.tar.gz
+heated-chamber-0.0.3.tar.gz
+octoprint-heated-chamber-1.2.0.tar.gz
