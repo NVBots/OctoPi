@@ -1,5 +1,5 @@
 export DIST_NAME=CILocal
-export DIST_VERSION=0.4
+export DIST_VERSION=0.4.2
 export OCTOPI_OCTOPRINT_ARCHIVE=https://github.com/NVBots/OctoPrint/archive/1.3.6-ci.zip
 export OCTOPI_OCTOPRINT_REPO_SHIP=https://github.com/NVBots/OctoPrint.git
 export OCTOPI_OCTOPRINT_REPO_BRANCH=master

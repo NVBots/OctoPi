@@ -42,3 +42,9 @@ pushd /opt/HostLoaderApp
     echo "--- Installing HostLoaderApp"
     ./nv_install.sh
 popd
+
+
+if [ "$CI_STATIC_IP" == "yes" ]
+  then
+  unpack /filesystem/interfaces.d /etc/network/interfaces.d
+fi
